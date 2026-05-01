@@ -1,0 +1,29 @@
+name: openFDA Usage Rules
+description: Operational, security, and compliance rules for the openFDA API.
+rules:
+  - id: api-key-required-at-scale
+    statement: An API key is recommended for any sustained or production-grade usage.
+    rationale: >-
+      Without a key, requests are limited to 240/min and 1,000/day per IP. With
+      a key the daily ceiling rises to 120,000.
+    severity: required
+  - id: https-only
+    statement: All requests must be made over HTTPS.
+    severity: required
+  - id: not-clinical-grade
+    statement: Data must not be used for individual clinical care decisions.
+    rationale: openFDA explicitly disclaims clinical and production validation.
+    severity: required
+  - id: no-public-alerts
+    statement: Do not use openFDA as the source of public health alerts.
+    rationale: FDA does not update recall status post-classification; alerting belongs to FDA channels.
+    severity: required
+  - id: pagination-cap
+    statement: Results pagination is capped at skip=25,000 and limit=1,000.
+    severity: advisory
+  - id: respect-rate-limits
+    statement: Implement exponential backoff on HTTP 429 responses.
+    severity: required
+  - id: causality-disclaimer
+    statement: Adverse event reports do not establish causation between product and reaction.
+    severity: required

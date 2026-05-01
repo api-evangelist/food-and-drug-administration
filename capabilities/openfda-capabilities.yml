@@ -1,0 +1,83 @@
+name: openFDA Capabilities
+description: Functional capabilities exposed by the openFDA public API.
+capabilities:
+  - id: drug-adverse-events
+    name: Search Drug Adverse Events
+    description: Query the FAERS dataset for drug adverse event reports.
+    operation: searchDrugEvents
+    domain: Drug Safety
+  - id: drug-labeling
+    name: Search Drug Labeling
+    description: Query Structured Product Labeling (SPL) records.
+    operation: searchDrugLabel
+    domain: Drug Information
+  - id: drug-recalls
+    name: Search Drug Recall Enforcement
+    description: Query drug recall enforcement reports.
+    operation: searchDrugEnforcement
+    domain: Drug Safety
+  - id: drug-ndc-directory
+    name: Search NDC Directory
+    description: Query the National Drug Code (NDC) Directory.
+    operation: searchDrugNDC
+    domain: Drug Information
+  - id: drugsfda
+    name: Search Drugs@FDA
+    description: Query approval records, applications, submissions, and products.
+    operation: searchDrugsFDA
+    domain: Drug Approvals
+  - id: drug-shortages
+    name: Search Drug Shortages
+    description: Query the FDA drug shortage database.
+    operation: searchDrugShortages
+    domain: Drug Supply
+  - id: device-adverse-events
+    name: Search Device Adverse Events
+    description: Query the MAUDE dataset for medical device adverse event reports.
+    operation: searchDeviceEvents
+    domain: Device Safety
+  - id: device-recalls
+    name: Search Device Recalls
+    description: Query device recalls and enforcement reports.
+    operation: searchDeviceRecalls
+    domain: Device Safety
+  - id: device-classification
+    name: Search Device Classifications
+    description: Query device product classifications.
+    operation: searchDeviceClassification
+    domain: Device Regulation
+  - id: device-510k
+    name: Search 510(k) Clearances
+    description: Query premarket notification (510(k)) records.
+    operation: searchDevice510k
+    domain: Device Approvals
+  - id: device-pma
+    name: Search PMA Records
+    description: Query premarket approval (PMA) records.
+    operation: searchDevicePMA
+    domain: Device Approvals
+  - id: device-udi
+    name: Search UDI Database
+    description: Query the Unique Device Identifier (UDI) database.
+    operation: searchDeviceUDI
+    domain: Device Information
+  - id: food-recalls
+    name: Search Food Recall Enforcement
+    description: Query food recall enforcement reports.
+    operation: searchFoodEnforcement
+    domain: Food Safety
+  - id: food-events
+    name: Search Food Adverse Events
+    description: Query the CAERS dataset for food, supplement, and cosmetic adverse events.
+    operation: searchFoodEvents
+    domain: Food Safety
+  - id: animal-vet-events
+    name: Search Animal & Veterinary Adverse Events
+    description: Query adverse events involving animal and veterinary products.
+    operation: searchAnimalVetEvents
+    domain: Veterinary Safety
+  - id: tobacco-problems
+    name: Search Tobacco Problem Reports
+    description: Query tobacco product problem reports.
+    operation: searchTobaccoProblems
+    domain: Tobacco
