@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: openFDA API — Food
+  description: 'openFDA API — Food. 2 operations. Lead operation: Food recall enforcement reports. Self-contained Naftiko
+    capability covering one Food And Drug Administration business surface.'
+  tags:
+  - Food And Drug Administration
+  - Food
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FOOD_AND_DRUG_ADMINISTRATION_API_KEY: FOOD_AND_DRUG_ADMINISTRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openfda-food
+    baseUri: https://api.fda.gov
+    description: openFDA API — Food business capability. Self-contained, no shared references.
+    resources:
+    - name: food-enforcement.json
+      path: /food/enforcement.json
+      operations:
+      - name: searchfoodenforcement
+        method: GET
+        description: Food recall enforcement reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: food-event.json
+      path: /food/event.json
+      operations:
+      - name: searchfoodevents
+        method: GET
+        description: Food adverse events (CAERS)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.FOOD_AND_DRUG_ADMINISTRATION_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: openfda-food-rest
+    port: 8080
+    description: REST adapter for openFDA API — Food. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/food/enforcement-json
+      name: food-enforcement-json
+      description: REST surface for food-enforcement.json.
+      operations:
+      - method: GET
+        name: searchfoodenforcement
+        description: Food recall enforcement reports
+        call: openfda-food.searchfoodenforcement
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/food/event-json
+      name: food-event-json
+      description: REST surface for food-event.json.
+      operations:
+      - method: GET
+        name: searchfoodevents
+        description: Food adverse events (CAERS)
+        call: openfda-food.searchfoodevents
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openfda-food-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for openFDA API — Food. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: food-recall-enforcement-reports
+      description: Food recall enforcement reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-food.searchfoodenforcement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: food-adverse-events-caers
+      description: Food adverse events (CAERS)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-food.searchfoodevents
+      outputParameters:
+      - type: object
+        mapping: $.

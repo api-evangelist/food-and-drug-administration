@@ -1,0 +1,328 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: openFDA API — Device
+  description: 'openFDA API — Device. 9 operations. Lead operation: 510(k) clearances. Self-contained Naftiko capability covering
+    one Food And Drug Administration business surface.'
+  tags:
+  - Food And Drug Administration
+  - Device
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FOOD_AND_DRUG_ADMINISTRATION_API_KEY: FOOD_AND_DRUG_ADMINISTRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openfda-device
+    baseUri: https://api.fda.gov
+    description: openFDA API — Device business capability. Self-contained, no shared references.
+    resources:
+    - name: device-510k.json
+      path: /device/510k.json
+      operations:
+      - name: searchdevice510k
+        method: GET
+        description: 510(k) clearances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-classification.json
+      path: /device/classification.json
+      operations:
+      - name: searchdeviceclassification
+        method: GET
+        description: Device product classifications
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-covid19serology.json
+      path: /device/covid19serology.json
+      operations:
+      - name: searchcovid19serology
+        method: GET
+        description: COVID-19 serology testing data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-enforcement.json
+      path: /device/enforcement.json
+      operations:
+      - name: searchdeviceenforcement
+        method: GET
+        description: Device recall enforcement reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-event.json
+      path: /device/event.json
+      operations:
+      - name: searchdeviceevents
+        method: GET
+        description: Device adverse events (MAUDE)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-pma.json
+      path: /device/pma.json
+      operations:
+      - name: searchdevicepma
+        method: GET
+        description: Premarket Approval (PMA) records
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-recall.json
+      path: /device/recall.json
+      operations:
+      - name: searchdevicerecalls
+        method: GET
+        description: Device recalls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-registrationlisting.json
+      path: /device/registrationlisting.json
+      operations:
+      - name: searchdeviceregistrationlisting
+        method: GET
+        description: Device registrations and listings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: device-udi.json
+      path: /device/udi.json
+      operations:
+      - name: searchdeviceudi
+        method: GET
+        description: Unique Device Identifier (UDI) database
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.FOOD_AND_DRUG_ADMINISTRATION_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: openfda-device-rest
+    port: 8080
+    description: REST adapter for openFDA API — Device. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/device/510k-json
+      name: device-510k-json
+      description: REST surface for device-510k.json.
+      operations:
+      - method: GET
+        name: searchdevice510k
+        description: 510(k) clearances
+        call: openfda-device.searchdevice510k
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/classification-json
+      name: device-classification-json
+      description: REST surface for device-classification.json.
+      operations:
+      - method: GET
+        name: searchdeviceclassification
+        description: Device product classifications
+        call: openfda-device.searchdeviceclassification
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/covid19serology-json
+      name: device-covid19serology-json
+      description: REST surface for device-covid19serology.json.
+      operations:
+      - method: GET
+        name: searchcovid19serology
+        description: COVID-19 serology testing data
+        call: openfda-device.searchcovid19serology
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/enforcement-json
+      name: device-enforcement-json
+      description: REST surface for device-enforcement.json.
+      operations:
+      - method: GET
+        name: searchdeviceenforcement
+        description: Device recall enforcement reports
+        call: openfda-device.searchdeviceenforcement
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/event-json
+      name: device-event-json
+      description: REST surface for device-event.json.
+      operations:
+      - method: GET
+        name: searchdeviceevents
+        description: Device adverse events (MAUDE)
+        call: openfda-device.searchdeviceevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/pma-json
+      name: device-pma-json
+      description: REST surface for device-pma.json.
+      operations:
+      - method: GET
+        name: searchdevicepma
+        description: Premarket Approval (PMA) records
+        call: openfda-device.searchdevicepma
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/recall-json
+      name: device-recall-json
+      description: REST surface for device-recall.json.
+      operations:
+      - method: GET
+        name: searchdevicerecalls
+        description: Device recalls
+        call: openfda-device.searchdevicerecalls
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/registrationlisting-json
+      name: device-registrationlisting-json
+      description: REST surface for device-registrationlisting.json.
+      operations:
+      - method: GET
+        name: searchdeviceregistrationlisting
+        description: Device registrations and listings
+        call: openfda-device.searchdeviceregistrationlisting
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/device/udi-json
+      name: device-udi-json
+      description: REST surface for device-udi.json.
+      operations:
+      - method: GET
+        name: searchdeviceudi
+        description: Unique Device Identifier (UDI) database
+        call: openfda-device.searchdeviceudi
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openfda-device-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for openFDA API — Device. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: 510-k-clearances
+      description: 510(k) clearances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdevice510k
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: device-product-classifications
+      description: Device product classifications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdeviceclassification
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: covid-19-serology-testing-data
+      description: COVID-19 serology testing data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchcovid19serology
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: device-recall-enforcement-reports
+      description: Device recall enforcement reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdeviceenforcement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: device-adverse-events-maude
+      description: Device adverse events (MAUDE)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdeviceevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: premarket-approval-pma-records
+      description: Premarket Approval (PMA) records
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdevicepma
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: device-recalls
+      description: Device recalls
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdevicerecalls
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: device-registrations-and-listings
+      description: Device registrations and listings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdeviceregistrationlisting
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unique-device-identifier-udi-database
+      description: Unique Device Identifier (UDI) database
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-device.searchdeviceudi
+      outputParameters:
+      - type: object
+        mapping: $.

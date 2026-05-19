@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: openFDA API — Tobacco
+  description: 'openFDA API — Tobacco. 1 operations. Lead operation: Tobacco product problem reports. Self-contained Naftiko
+    capability covering one Food And Drug Administration business surface.'
+  tags:
+  - Food And Drug Administration
+  - Tobacco
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FOOD_AND_DRUG_ADMINISTRATION_API_KEY: FOOD_AND_DRUG_ADMINISTRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openfda-tobacco
+    baseUri: https://api.fda.gov
+    description: openFDA API — Tobacco business capability. Self-contained, no shared references.
+    resources:
+    - name: tobacco-problem.json
+      path: /tobacco/problem.json
+      operations:
+      - name: searchtobaccoproblems
+        method: GET
+        description: Tobacco product problem reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.FOOD_AND_DRUG_ADMINISTRATION_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: openfda-tobacco-rest
+    port: 8080
+    description: REST adapter for openFDA API — Tobacco. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/tobacco/problem-json
+      name: tobacco-problem-json
+      description: REST surface for tobacco-problem.json.
+      operations:
+      - method: GET
+        name: searchtobaccoproblems
+        description: Tobacco product problem reports
+        call: openfda-tobacco.searchtobaccoproblems
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openfda-tobacco-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for openFDA API — Tobacco. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: tobacco-product-problem-reports
+      description: Tobacco product problem reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-tobacco.searchtobaccoproblems
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,232 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: openFDA API — Drug
+  description: 'openFDA API — Drug. 6 operations. Lead operation: Drugs@FDA. Self-contained Naftiko capability covering one
+    Food And Drug Administration business surface.'
+  tags:
+  - Food And Drug Administration
+  - Drug
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FOOD_AND_DRUG_ADMINISTRATION_API_KEY: FOOD_AND_DRUG_ADMINISTRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openfda-drug
+    baseUri: https://api.fda.gov
+    description: openFDA API — Drug business capability. Self-contained, no shared references.
+    resources:
+    - name: drug-drugsfda.json
+      path: /drug/drugsfda.json
+      operations:
+      - name: searchdrugsfda
+        method: GET
+        description: Drugs@FDA
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: drug-enforcement.json
+      path: /drug/enforcement.json
+      operations:
+      - name: searchdrugenforcement
+        method: GET
+        description: Drug recall enforcement reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: drug-event.json
+      path: /drug/event.json
+      operations:
+      - name: searchdrugevents
+        method: GET
+        description: Drug adverse events (FAERS)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: drug-label.json
+      path: /drug/label.json
+      operations:
+      - name: searchdruglabel
+        method: GET
+        description: Drug product labeling (SPL)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: drug-ndc.json
+      path: /drug/ndc.json
+      operations:
+      - name: searchdrugndc
+        method: GET
+        description: NDC Directory
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: drug-shortages.json
+      path: /drug/shortages.json
+      operations:
+      - name: searchdrugshortages
+        method: GET
+        description: Drug shortages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: api_key
+      value: '{{env.FOOD_AND_DRUG_ADMINISTRATION_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: openfda-drug-rest
+    port: 8080
+    description: REST adapter for openFDA API — Drug. One Spectral-compliant resource per consumed operation, prefixed with
+      /v1.
+    resources:
+    - path: /v1/drug/drugsfda-json
+      name: drug-drugsfda-json
+      description: REST surface for drug-drugsfda.json.
+      operations:
+      - method: GET
+        name: searchdrugsfda
+        description: Drugs@FDA
+        call: openfda-drug.searchdrugsfda
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/drug/enforcement-json
+      name: drug-enforcement-json
+      description: REST surface for drug-enforcement.json.
+      operations:
+      - method: GET
+        name: searchdrugenforcement
+        description: Drug recall enforcement reports
+        call: openfda-drug.searchdrugenforcement
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/drug/event-json
+      name: drug-event-json
+      description: REST surface for drug-event.json.
+      operations:
+      - method: GET
+        name: searchdrugevents
+        description: Drug adverse events (FAERS)
+        call: openfda-drug.searchdrugevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/drug/label-json
+      name: drug-label-json
+      description: REST surface for drug-label.json.
+      operations:
+      - method: GET
+        name: searchdruglabel
+        description: Drug product labeling (SPL)
+        call: openfda-drug.searchdruglabel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/drug/ndc-json
+      name: drug-ndc-json
+      description: REST surface for drug-ndc.json.
+      operations:
+      - method: GET
+        name: searchdrugndc
+        description: NDC Directory
+        call: openfda-drug.searchdrugndc
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/drug/shortages-json
+      name: drug-shortages-json
+      description: REST surface for drug-shortages.json.
+      operations:
+      - method: GET
+        name: searchdrugshortages
+        description: Drug shortages
+        call: openfda-drug.searchdrugshortages
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openfda-drug-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for openFDA API — Drug. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: drugs-fda
+      description: Drugs@FDA
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-drug.searchdrugsfda
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drug-recall-enforcement-reports
+      description: Drug recall enforcement reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-drug.searchdrugenforcement
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drug-adverse-events-faers
+      description: Drug adverse events (FAERS)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-drug.searchdrugevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drug-product-labeling-spl
+      description: Drug product labeling (SPL)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-drug.searchdruglabel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ndc-directory
+      description: NDC Directory
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-drug.searchdrugndc
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: drug-shortages
+      description: Drug shortages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openfda-drug.searchdrugshortages
+      outputParameters:
+      - type: object
+        mapping: $.
