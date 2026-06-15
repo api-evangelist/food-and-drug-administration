@@ -1,0 +1,1012 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "openFDA API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drug",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Drug adverse events (FAERS)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/drug/event.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query the FDA Adverse Event Reporting System (FAERS) for drug adverse event reports submitted since 2004."
+        },
+        {
+          "info": {
+            "name": "Drug product labeling (SPL)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/drug/label.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query Structured Product Labeling (SPL) records for prescription and over-the-counter drugs."
+        },
+        {
+          "info": {
+            "name": "Drug recall enforcement reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/drug/enforcement.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query drug recall enforcement reports from the FDA Recall Enterprise System (RES)."
+        },
+        {
+          "info": {
+            "name": "NDC Directory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/drug/ndc.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query the National Drug Code (NDC) Directory of products in commercial distribution."
+        },
+        {
+          "info": {
+            "name": "Drugs@FDA",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/drug/drugsfda.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query Drugs@FDA approval records including applications, submissions, and products."
+        },
+        {
+          "info": {
+            "name": "Drug shortages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/drug/shortages.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query the FDA drug shortage database."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Device",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Device adverse events (MAUDE)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/event.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query the Manufacturer and User Facility Device Experience (MAUDE) database for medical device adverse event reports."
+        },
+        {
+          "info": {
+            "name": "Device recall enforcement reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/enforcement.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Device recall enforcement reports"
+        },
+        {
+          "info": {
+            "name": "Device recalls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/recall.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Device recalls"
+        },
+        {
+          "info": {
+            "name": "Device product classifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/classification.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Device product classifications"
+        },
+        {
+          "info": {
+            "name": "510(k) clearances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/510k.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "510(k) clearances"
+        },
+        {
+          "info": {
+            "name": "Premarket Approval (PMA) records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/pma.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Premarket Approval (PMA) records"
+        },
+        {
+          "info": {
+            "name": "Device registrations and listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/registrationlisting.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Device registrations and listings"
+        },
+        {
+          "info": {
+            "name": "Unique Device Identifier (UDI) database",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/udi.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Unique Device Identifier (UDI) database"
+        },
+        {
+          "info": {
+            "name": "COVID-19 serology testing data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/device/covid19serology.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "COVID-19 serology testing data"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Food",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Food recall enforcement reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/food/enforcement.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query food recall enforcement reports from the FDA Recall Enterprise System (RES). Updated weekly, data from 2004 onward."
+        },
+        {
+          "info": {
+            "name": "Food adverse events (CAERS)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/food/event.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query the CFSAN Adverse Event Reporting System (CAERS) for adverse events associated with foods, dietary supplements, and cosmetics."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Animal & Veterinary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Animal & veterinary adverse events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/animalandveterinary/event.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query adverse events involving animal drugs and veterinary products."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tobacco",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Tobacco product problem reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/tobacco/problem.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Tobacco product problem reports"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Other",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "National Drug Code SPL Data Elements (NSDE)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/other/nsde.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "National Drug Code SPL Data Elements (NSDE)"
+        },
+        {
+          "info": {
+            "name": "Substance data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/other/substance.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Substance data"
+        },
+        {
+          "info": {
+            "name": "Historical FDA documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/other/historicaldocument.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Historical FDA documents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
