@@ -54,6 +54,10 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
 common:
+  - type: DomainSecurity
+    url: security/food-and-drug-administration-domain-security.yml
+  - type: Authentication
+    url: authentication/food-and-drug-administration-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/fda
   - type: Website

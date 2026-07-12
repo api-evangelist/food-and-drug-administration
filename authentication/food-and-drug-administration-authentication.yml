@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openfda-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: apiKeyQuery
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: 'Free openFDA API key (obtain at https://open.fda.gov/apis/authentication/).
+    Without a key: 240 req/min and 1,000 req/day per IP. With a key: 240 req/min and 120,000
+    req/day per key.'
+  sources:
+  - openapi/openfda-openapi.yml
