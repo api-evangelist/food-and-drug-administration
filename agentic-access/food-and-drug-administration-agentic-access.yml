@@ -1,0 +1,234 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/openfda-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 22
+  by_action_class:
+    connected: 22
+  by_consequence:
+    read: 22
+  human_in_the_loop_required: 0
+operations:
+- path: /drug/event.json
+  method: get
+  operationId: searchDrugEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /drug/label.json
+  method: get
+  operationId: searchDrugLabel
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /drug/enforcement.json
+  method: get
+  operationId: searchDrugEnforcement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /drug/ndc.json
+  method: get
+  operationId: searchDrugNDC
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /drug/drugsfda.json
+  method: get
+  operationId: searchDrugsFDA
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /drug/shortages.json
+  method: get
+  operationId: searchDrugShortages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/event.json
+  method: get
+  operationId: searchDeviceEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/enforcement.json
+  method: get
+  operationId: searchDeviceEnforcement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/recall.json
+  method: get
+  operationId: searchDeviceRecalls
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/classification.json
+  method: get
+  operationId: searchDeviceClassification
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/510k.json
+  method: get
+  operationId: searchDevice510k
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/pma.json
+  method: get
+  operationId: searchDevicePMA
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/registrationlisting.json
+  method: get
+  operationId: searchDeviceRegistrationListing
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/udi.json
+  method: get
+  operationId: searchDeviceUDI
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /device/covid19serology.json
+  method: get
+  operationId: searchCovid19Serology
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /food/enforcement.json
+  method: get
+  operationId: searchFoodEnforcement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /food/event.json
+  method: get
+  operationId: searchFoodEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /animalandveterinary/event.json
+  method: get
+  operationId: searchAnimalVetEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tobacco/problem.json
+  method: get
+  operationId: searchTobaccoProblems
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /other/nsde.json
+  method: get
+  operationId: searchNSDE
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /other/substance.json
+  method: get
+  operationId: searchSubstance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /other/historicaldocument.json
+  method: get
+  operationId: searchHistoricalDocuments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

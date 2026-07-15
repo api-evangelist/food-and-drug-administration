@@ -54,6 +54,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/food-and-drug-administration-agentic-access.yml
   - type: DomainSecurity
     url: security/food-and-drug-administration-domain-security.yml
   - type: Authentication
