@@ -1,0 +1,235 @@
+openapi: 3.0.3
+info:
+  title: openFDA Animal & Veterinary Drug API
+  description: openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).
+  version: '1.0'
+  contact:
+    name: openFDA
+    url: https://open.fda.gov/apis
+    email: open@fda.hhs.gov
+  license:
+    name: CC0 1.0 Universal (Public Domain Dedication)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://api.fda.gov
+  description: openFDA production API
+security:
+- apiKeyQuery: []
+- {}
+tags:
+- name: Drug
+  description: Drug-related endpoints (adverse events, labeling, recalls, NDC).
+paths:
+  /drug/event.json:
+    get:
+      tags:
+      - Drug
+      summary: Drug adverse events (FAERS)
+      description: Query the FDA Adverse Event Reporting System (FAERS) for drug adverse event reports submitted since 2004.
+      operationId: searchDrugEvents
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /drug/label.json:
+    get:
+      tags:
+      - Drug
+      summary: Drug product labeling (SPL)
+      description: Query Structured Product Labeling (SPL) records for prescription and over-the-counter drugs.
+      operationId: searchDrugLabel
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/enforcement.json:
+    get:
+      tags:
+      - Drug
+      summary: Drug recall enforcement reports
+      description: Query drug recall enforcement reports from the FDA Recall Enterprise System (RES).
+      operationId: searchDrugEnforcement
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/ndc.json:
+    get:
+      tags:
+      - Drug
+      summary: NDC Directory
+      description: Query the National Drug Code (NDC) Directory of products in commercial distribution.
+      operationId: searchDrugNDC
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/drugsfda.json:
+    get:
+      tags:
+      - Drug
+      summary: Drugs@FDA
+      description: Query Drugs@FDA approval records including applications, submissions, and products.
+      operationId: searchDrugsFDA
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/shortages.json:
+    get:
+      tags:
+      - Drug
+      summary: Drug shortages
+      description: Query the FDA drug shortage database.
+      operationId: searchDrugShortages
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+components:
+  responses:
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: No matching records found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    SearchResults:
+      description: Successful query result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SearchResponse'
+  parameters:
+    Count:
+      name: count
+      in: query
+      description: Field to count occurrences against (returns aggregated terms).
+      required: false
+      schema:
+        type: string
+    Skip:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination (max 25,000).
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 25000
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return (max 1000).
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1
+    Search:
+      name: search
+      in: query
+      description: Lucene-style search expression scoped to the dataset's fields.
+      required: false
+      schema:
+        type: string
+      example: receivedate:[2024-01-01+TO+2024-12-31]
+    Sort:
+      name: sort
+      in: query
+      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
+      required: false
+      schema:
+        type: string
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string
+    Meta:
+      type: object
+      properties:
+        disclaimer:
+          type: string
+        terms:
+          type: string
+          format: uri
+        license:
+          type: string
+          format: uri
+        last_updated:
+          type: string
+          format: date
+        results:
+          type: object
+          properties:
+            skip:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: 'Free openFDA API key (obtain at https://open.fda.gov/apis/authentication/). Without a key: 240 req/min and 1,000 req/day per IP. With a key: 240 req/min and 120,000 req/day per key.'

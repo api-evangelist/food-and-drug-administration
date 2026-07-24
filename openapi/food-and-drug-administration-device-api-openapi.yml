@@ -1,0 +1,249 @@
+openapi: 3.0.3
+info:
+  title: openFDA Animal & Veterinary Device API
+  description: openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).
+  version: '1.0'
+  contact:
+    name: openFDA
+    url: https://open.fda.gov/apis
+    email: open@fda.hhs.gov
+  license:
+    name: CC0 1.0 Universal (Public Domain Dedication)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+- url: https://api.fda.gov
+  description: openFDA production API
+security:
+- apiKeyQuery: []
+- {}
+tags:
+- name: Device
+  description: Device-related endpoints (adverse events, classifications, recalls, 510(k), PMA, UDI).
+paths:
+  /device/event.json:
+    get:
+      tags:
+      - Device
+      summary: Device adverse events (MAUDE)
+      description: Query the Manufacturer and User Facility Device Experience (MAUDE) database for medical device adverse event reports.
+      operationId: searchDeviceEvents
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/enforcement.json:
+    get:
+      tags:
+      - Device
+      summary: Device recall enforcement reports
+      operationId: searchDeviceEnforcement
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/recall.json:
+    get:
+      tags:
+      - Device
+      summary: Device recalls
+      operationId: searchDeviceRecalls
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/classification.json:
+    get:
+      tags:
+      - Device
+      summary: Device product classifications
+      operationId: searchDeviceClassification
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/510k.json:
+    get:
+      tags:
+      - Device
+      summary: 510(k) clearances
+      operationId: searchDevice510k
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/pma.json:
+    get:
+      tags:
+      - Device
+      summary: Premarket Approval (PMA) records
+      operationId: searchDevicePMA
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/registrationlisting.json:
+    get:
+      tags:
+      - Device
+      summary: Device registrations and listings
+      operationId: searchDeviceRegistrationListing
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/udi.json:
+    get:
+      tags:
+      - Device
+      summary: Unique Device Identifier (UDI) database
+      operationId: searchDeviceUDI
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/covid19serology.json:
+    get:
+      tags:
+      - Device
+      summary: COVID-19 serology testing data
+      operationId: searchCovid19Serology
+      parameters:
+      - $ref: '#/components/parameters/Search'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+components:
+  parameters:
+    Count:
+      name: count
+      in: query
+      description: Field to count occurrences against (returns aggregated terms).
+      required: false
+      schema:
+        type: string
+    Skip:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination (max 25,000).
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 25000
+        default: 0
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return (max 1000).
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1
+    Search:
+      name: search
+      in: query
+      description: Lucene-style search expression scoped to the dataset's fields.
+      required: false
+      schema:
+        type: string
+      example: receivedate:[2024-01-01+TO+2024-12-31]
+    Sort:
+      name: sort
+      in: query
+      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
+      required: false
+      schema:
+        type: string
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    Meta:
+      type: object
+      properties:
+        disclaimer:
+          type: string
+        terms:
+          type: string
+          format: uri
+        license:
+          type: string
+          format: uri
+        last_updated:
+          type: string
+          format: date
+        results:
+          type: object
+          properties:
+            skip:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+  responses:
+    SearchResults:
+      description: Successful query result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SearchResponse'
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: 'Free openFDA API key (obtain at https://open.fda.gov/apis/authentication/). Without a key: 240 req/min and 1,000 req/day per IP. With a key: 240 req/min and 120,000 req/day per key.'
