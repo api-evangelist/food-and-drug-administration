@@ -5,7 +5,20 @@ description: >-
   products, and tobacco. Each noun exposes one or more datasets including adverse events, recall enforcement reports,
   product labeling, classifications, registrations, and approvals.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/food-and-drug-administration.png
 access: 3rd-Party
 created: '2024-12-03'
 modified: '2026-05-19'
@@ -21,38 +34,150 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: food-and-drug-administration:openfda
-    name: openFDA
-    tags:
-      - Drugs
-      - Devices
-      - Food
-      - Animal & Veterinary
-      - Tobacco
-    humanURL: https://open.fda.gov/apis
-    baseURL: https://api.fda.gov
-    description: >-
-      openFDA provides public APIs for drug adverse events (FAERS), drug labeling (SPL), drug recall enforcement, NDC
-      directory, Drugs@FDA, drug shortages, device adverse events (MAUDE), 510(k), PMA, UDI, device classification, food
-      recall enforcement, food adverse events (CAERS), animal/veterinary adverse events, and tobacco problem reports.
-    properties:
-      - type: Documentation
-        url: https://open.fda.gov/apis
-      - type: Authentication
-        url: https://open.fda.gov/apis/authentication/
-      - type: TermsOfService
-        url: https://open.fda.gov/terms/
-      - type: StatusPage
-        url: https://open.fda.gov/about/status/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/openapi/openfda-openapi.yml
-      - type: Capabilities
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
-      - type: Rules
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
+- aid: food-and-drug-administration:food-and-drug-administration-animal-veterinary-api
+  name: Food and Drug Administration Animal & Veterinary API
+  description: Adverse events involving animal and veterinary products.
+  humanURL: https://open.fda.gov/apis
+  baseURL: https://api.fda.gov
+  tags:
+  - Animal & Veterinary
+  properties:
+  - type: OpenAPI
+    url: openapi/food-and-drug-administration-animal-veterinary-api-openapi.yml
+  - type: Documentation
+    url: https://open.fda.gov/apis
+  - type: Authentication
+    url: https://open.fda.gov/apis/authentication/
+  - type: TermsOfService
+    url: https://open.fda.gov/terms/
+  - type: StatusPage
+    url: https://open.fda.gov/about/status/
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
+- aid: food-and-drug-administration:food-and-drug-administration-device-api
+  name: Food and Drug Administration Device API
+  description: Device-related endpoints (adverse events, classifications, recalls, 510(k), PMA, UDI).
+  humanURL: https://open.fda.gov/apis
+  baseURL: https://api.fda.gov
+  tags:
+  - Device
+  properties:
+  - type: OpenAPI
+    url: openapi/food-and-drug-administration-device-api-openapi.yml
+  - type: Documentation
+    url: https://open.fda.gov/apis
+  - type: Authentication
+    url: https://open.fda.gov/apis/authentication/
+  - type: TermsOfService
+    url: https://open.fda.gov/terms/
+  - type: StatusPage
+    url: https://open.fda.gov/about/status/
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
+- aid: food-and-drug-administration:food-and-drug-administration-drug-api
+  name: Food and Drug Administration Drug API
+  description: Drug-related endpoints (adverse events, labeling, recalls, NDC).
+  humanURL: https://open.fda.gov/apis
+  baseURL: https://api.fda.gov
+  tags:
+  - Drug
+  properties:
+  - type: OpenAPI
+    url: openapi/food-and-drug-administration-drug-api-openapi.yml
+  - type: Documentation
+    url: https://open.fda.gov/apis
+  - type: Authentication
+    url: https://open.fda.gov/apis/authentication/
+  - type: TermsOfService
+    url: https://open.fda.gov/terms/
+  - type: StatusPage
+    url: https://open.fda.gov/about/status/
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
+- aid: food-and-drug-administration:food-and-drug-administration-food-api
+  name: Food and Drug Administration Food API
+  description: Food-related endpoints (enforcement reports, adverse events).
+  humanURL: https://open.fda.gov/apis
+  baseURL: https://api.fda.gov
+  tags:
+  - Food
+  properties:
+  - type: OpenAPI
+    url: openapi/food-and-drug-administration-food-api-openapi.yml
+  - type: Documentation
+    url: https://open.fda.gov/apis
+  - type: Authentication
+    url: https://open.fda.gov/apis/authentication/
+  - type: TermsOfService
+    url: https://open.fda.gov/terms/
+  - type: StatusPage
+    url: https://open.fda.gov/about/status/
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
+- aid: food-and-drug-administration:food-and-drug-administration-other-api
+  name: Food and Drug Administration Other API
+  description: Cross-cutting datasets (NSDE, substance, harmonized).
+  humanURL: https://open.fda.gov/apis
+  baseURL: https://api.fda.gov
+  tags:
+  - Other
+  properties:
+  - type: OpenAPI
+    url: openapi/food-and-drug-administration-other-api-openapi.yml
+  - type: Documentation
+    url: https://open.fda.gov/apis
+  - type: Authentication
+    url: https://open.fda.gov/apis/authentication/
+  - type: TermsOfService
+    url: https://open.fda.gov/terms/
+  - type: StatusPage
+    url: https://open.fda.gov/about/status/
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
+- aid: food-and-drug-administration:food-and-drug-administration-tobacco-api
+  name: Food and Drug Administration Tobacco API
+  description: Tobacco product problem reports.
+  humanURL: https://open.fda.gov/apis
+  baseURL: https://api.fda.gov
+  tags:
+  - Tobacco
+  properties:
+  - type: OpenAPI
+    url: openapi/food-and-drug-administration-tobacco-api-openapi.yml
+  - type: Documentation
+    url: https://open.fda.gov/apis
+  - type: Authentication
+    url: https://open.fda.gov/apis/authentication/
+  - type: TermsOfService
+    url: https://open.fda.gov/terms/
+  - type: StatusPage
+    url: https://open.fda.gov/about/status/
+  - type: Capabilities
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/capabilities/openfda-capabilities.yml
+  - type: Rules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
 common:
   - type: AgenticAccess
     url: agentic-access/food-and-drug-administration-agentic-access.yml
