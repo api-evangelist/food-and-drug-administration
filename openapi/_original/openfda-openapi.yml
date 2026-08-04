@@ -1,0 +1,474 @@
+openapi: 3.0.3
+info:
+  title: openFDA API
+  description: >-
+    openFDA is an Elasticsearch-based public API serving FDA data on drugs,
+    devices, foods, animal/veterinary products, and tobacco. Each noun exposes
+    one or more categories (adverse events, recall enforcement reports,
+    labeling, classification, registration, etc.).
+  version: "1.0"
+  contact:
+    name: openFDA
+    url: https://open.fda.gov/apis
+    email: open@fda.hhs.gov
+  license:
+    name: CC0 1.0 Universal (Public Domain Dedication)
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+servers:
+  - url: https://api.fda.gov
+    description: openFDA production API
+security:
+  - apiKeyQuery: []
+  - {}
+tags:
+  - name: Drug
+    description: Drug-related endpoints (adverse events, labeling, recalls, NDC).
+  - name: Device
+    description: Device-related endpoints (adverse events, classifications, recalls, 510(k), PMA, UDI).
+  - name: Food
+    description: Food-related endpoints (enforcement reports, adverse events).
+  - name: Animal & Veterinary
+    description: Adverse events involving animal and veterinary products.
+  - name: Tobacco
+    description: Tobacco product problem reports.
+  - name: Other
+    description: Cross-cutting datasets (NSDE, substance, harmonized).
+paths:
+  /drug/event.json:
+    get:
+      tags: [Drug]
+      summary: Drug adverse events (FAERS)
+      description: Query the FDA Adverse Event Reporting System (FAERS) for drug adverse event reports submitted since 2004.
+      operationId: searchDrugEvents
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /drug/label.json:
+    get:
+      tags: [Drug]
+      summary: Drug product labeling (SPL)
+      description: Query Structured Product Labeling (SPL) records for prescription and over-the-counter drugs.
+      operationId: searchDrugLabel
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/enforcement.json:
+    get:
+      tags: [Drug]
+      summary: Drug recall enforcement reports
+      description: Query drug recall enforcement reports from the FDA Recall Enterprise System (RES).
+      operationId: searchDrugEnforcement
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/ndc.json:
+    get:
+      tags: [Drug]
+      summary: NDC Directory
+      description: Query the National Drug Code (NDC) Directory of products in commercial distribution.
+      operationId: searchDrugNDC
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/drugsfda.json:
+    get:
+      tags: [Drug]
+      summary: Drugs@FDA
+      description: Query Drugs@FDA approval records including applications, submissions, and products.
+      operationId: searchDrugsFDA
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /drug/shortages.json:
+    get:
+      tags: [Drug]
+      summary: Drug shortages
+      description: Query the FDA drug shortage database.
+      operationId: searchDrugShortages
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/event.json:
+    get:
+      tags: [Device]
+      summary: Device adverse events (MAUDE)
+      description: Query the Manufacturer and User Facility Device Experience (MAUDE) database for medical device adverse event reports.
+      operationId: searchDeviceEvents
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/enforcement.json:
+    get:
+      tags: [Device]
+      summary: Device recall enforcement reports
+      operationId: searchDeviceEnforcement
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/recall.json:
+    get:
+      tags: [Device]
+      summary: Device recalls
+      operationId: searchDeviceRecalls
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/classification.json:
+    get:
+      tags: [Device]
+      summary: Device product classifications
+      operationId: searchDeviceClassification
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/510k.json:
+    get:
+      tags: [Device]
+      summary: 510(k) clearances
+      operationId: searchDevice510k
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/pma.json:
+    get:
+      tags: [Device]
+      summary: Premarket Approval (PMA) records
+      operationId: searchDevicePMA
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/registrationlisting.json:
+    get:
+      tags: [Device]
+      summary: Device registrations and listings
+      operationId: searchDeviceRegistrationListing
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/udi.json:
+    get:
+      tags: [Device]
+      summary: Unique Device Identifier (UDI) database
+      operationId: searchDeviceUDI
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /device/covid19serology.json:
+    get:
+      tags: [Device]
+      summary: COVID-19 serology testing data
+      operationId: searchCovid19Serology
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /food/enforcement.json:
+    get:
+      tags: [Food]
+      summary: Food recall enforcement reports
+      description: Query food recall enforcement reports from the FDA Recall Enterprise System (RES). Updated weekly, data from 2004 onward.
+      operationId: searchFoodEnforcement
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /food/event.json:
+    get:
+      tags: [Food]
+      summary: Food adverse events (CAERS)
+      description: Query the CFSAN Adverse Event Reporting System (CAERS) for adverse events associated with foods, dietary supplements, and cosmetics.
+      operationId: searchFoodEvents
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /animalandveterinary/event.json:
+    get:
+      tags: [Animal & Veterinary]
+      summary: Animal & veterinary adverse events
+      description: Query adverse events involving animal drugs and veterinary products.
+      operationId: searchAnimalVetEvents
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /tobacco/problem.json:
+    get:
+      tags: [Tobacco]
+      summary: Tobacco product problem reports
+      operationId: searchTobaccoProblems
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /other/nsde.json:
+    get:
+      tags: [Other]
+      summary: National Drug Code SPL Data Elements (NSDE)
+      operationId: searchNSDE
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /other/substance.json:
+    get:
+      tags: [Other]
+      summary: Substance data
+      operationId: searchSubstance
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+  /other/historicaldocument.json:
+    get:
+      tags: [Other]
+      summary: Historical FDA documents
+      operationId: searchHistoricalDocuments
+      parameters:
+        - $ref: '#/components/parameters/Search'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Count'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Skip'
+      responses:
+        '200':
+          $ref: '#/components/responses/SearchResults'
+components:
+  securitySchemes:
+    apiKeyQuery:
+      type: apiKey
+      in: query
+      name: api_key
+      description: >-
+        Free openFDA API key (obtain at https://open.fda.gov/apis/authentication/).
+        Without a key: 240 req/min and 1,000 req/day per IP. With a key: 240
+        req/min and 120,000 req/day per key.
+  parameters:
+    Search:
+      name: search
+      in: query
+      description: Lucene-style search expression scoped to the dataset's fields.
+      required: false
+      schema:
+        type: string
+      example: receivedate:[2024-01-01+TO+2024-12-31]
+    Sort:
+      name: sort
+      in: query
+      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
+      required: false
+      schema:
+        type: string
+    Count:
+      name: count
+      in: query
+      description: Field to count occurrences against (returns aggregated terms).
+      required: false
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return (max 1000).
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1
+    Skip:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination (max 25,000).
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 25000
+        default: 0
+  responses:
+    SearchResults:
+      description: Successful query result.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SearchResponse'
+    NotFound:
+      description: No matching records found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    RateLimited:
+      description: Rate limit exceeded.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Meta:
+      type: object
+      properties:
+        disclaimer:
+          type: string
+        terms:
+          type: string
+          format: uri
+        license:
+          type: string
+          format: uri
+        last_updated:
+          type: string
+          format: date
+        results:
+          type: object
+          properties:
+            skip:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string

@@ -1,0 +1,24 @@
+{
+  "provider": "food-and-drug-administration",
+  "sources": [
+    "food-and-drug-administration-animal-veterinary-api-openapi.yml",
+    "food-and-drug-administration-device-api-openapi.yml",
+    "food-and-drug-administration-drug-api-openapi.yml",
+    "food-and-drug-administration-food-api-openapi.yml",
+    "food-and-drug-administration-other-api-openapi.yml",
+    "food-and-drug-administration-tobacco-api-openapi.yml"
+  ],
+  "outputs": [
+    "food-and-drug-administration-animal-veterinary-api-openapi.yml",
+    "food-and-drug-administration-device-api-openapi.yml",
+    "food-and-drug-administration-drug-api-openapi.yml",
+    "food-and-drug-administration-food-api-openapi.yml",
+    "food-and-drug-administration-other-api-openapi.yml",
+    "food-and-drug-administration-tobacco-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
