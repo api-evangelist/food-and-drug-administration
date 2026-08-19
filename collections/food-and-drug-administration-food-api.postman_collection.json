@@ -1,0 +1,305 @@
+{
+  "item": [
+    {
+      "id": "a02047de-e0d1-4587-8167-c9266ae1b650",
+      "name": "Food",
+      "description": {
+        "content": "Food-related endpoints (enforcement reports, adverse events).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f315bcc-c612-403c-9dce-6c308abd0907",
+          "name": "Food recall enforcement reports",
+          "request": {
+            "name": "Food recall enforcement reports",
+            "description": {
+              "content": "Query food recall enforcement reports from the FDA Recall Enterprise System (RES). Updated weekly, data from 2004 onward.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "food",
+                "enforcement.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7e8c51b-a941-4f66-8ced-ffa5effd7962",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "food",
+                    "enforcement.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://oSlvrPBkGlkABGIiFieqgy.jqreu98fN4XfFjeIfNbdbcG4FJ,eARVveSwWzemU\",\n    \"license\": \"https://qYIGgQrewhVGqKpOpwteHKlfN.apQ1fysdVeRPQJMTQQiTqAXFlTaoWmnXjzjbfIIT4aznMdXX1wTwf9zftyw1StyNURTASc7RQNgdUkApu\",\n    \"last_updated\": \"1999-06-05\",\n    \"results\": {\n      \"skip\": 272,\n      \"limit\": 5965,\n      \"total\": 5321\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": true\n    },\n    {\n      \"key_0\": 3234.352202634041,\n      \"key_1\": 384.0303576059556,\n      \"key_2\": 2713.755876459801\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "756114e1-07de-4079-9735-cb4eace461b0",
+          "name": "Food adverse events (CAERS)",
+          "request": {
+            "name": "Food adverse events (CAERS)",
+            "description": {
+              "content": "Query the CFSAN Adverse Event Reporting System (CAERS) for adverse events associated with foods, dietary supplements, and cosmetics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "food",
+                "event.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00e6bc66-f12c-41e1-aaef-716007d345dc",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "food",
+                    "event.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://NHJYznaaJqqsbajUWbApt.hacesYLzaZ,cpPTLjHF7lNdPzceI\",\n    \"license\": \"http://cdwrHRbfBxN.hvgcCjfT0g-78ix4WwY\",\n    \"last_updated\": \"1953-05-31\",\n    \"results\": {\n      \"skip\": 4351,\n      \"limit\": 8748,\n      \"total\": 4560\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 4111\n    },\n    {\n      \"key_0\": 3996,\n      \"key_1\": false,\n      \"key_2\": \"string\",\n      \"key_3\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fda.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f7b02e66-8ffe-4892-a02a-b18f76202478",
+    "name": "openFDA Animal & Veterinary Food API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).\n\nContact Support:\n Name: openFDA\n Email: open@fda.hhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

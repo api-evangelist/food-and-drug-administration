@@ -1,0 +1,1177 @@
+{
+  "item": [
+    {
+      "id": "25f9f322-4ae3-40ec-975c-1d4fa19e10ca",
+      "name": "Device",
+      "description": {
+        "content": "Device-related endpoints (adverse events, classifications, recalls, 510(k), PMA, UDI).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbd1e546-c264-4e02-8179-fe5af3b97367",
+          "name": "Device adverse events (MAUDE)",
+          "request": {
+            "name": "Device adverse events (MAUDE)",
+            "description": {
+              "content": "Query the Manufacturer and User Facility Device Experience (MAUDE) database for medical device adverse event reports.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "device",
+                "event.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8818475e-d69f-42b8-888f-0c629d58efbc",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "event.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"https://XXofd.onwaTdO3LVEDw\",\n    \"license\": \"http://NWVnAXCVyocMMSEqbDMwxMiM.bkos6SjhRxi-dEzPlT+jkRFM85IkfZ0n83rDC1o\",\n    \"last_updated\": \"1981-11-10\",\n    \"results\": {\n      \"skip\": 8081,\n      \"limit\": 500,\n      \"total\": 9936\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": false\n    },\n    {\n      \"key_0\": 8686,\n      \"key_1\": 9501\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07c7e59c-2cd2-4b68-8c8f-cc498cb2e66b",
+          "name": "Device recall enforcement reports",
+          "request": {
+            "name": "Device recall enforcement reports",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "enforcement.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a336f01-6a80-470d-b86a-fb4594e6e7eb",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "enforcement.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7be7cd29-8ae6-4278-896f-cb0070d4a74e",
+          "name": "Device recalls",
+          "request": {
+            "name": "Device recalls",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "recall.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a90aa9dc-510e-4e01-b9ef-6be0f1b4cca0",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "recall.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2bea868f-3118-431e-80e5-171c8d015b04",
+          "name": "Device product classifications",
+          "request": {
+            "name": "Device product classifications",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "classification.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06c56f83-96c8-4207-8200-3f42bfb10ac9",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "classification.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "270c8ae9-6e7a-4a2c-8f6e-bc533d4467d3",
+          "name": "510(k) clearances",
+          "request": {
+            "name": "510(k) clearances",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "510k.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4158185-7277-4605-82d5-fa7634d13b78",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "510k.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5306c397-ede9-4208-a4bf-15a35382c919",
+          "name": "Premarket Approval (PMA) records",
+          "request": {
+            "name": "Premarket Approval (PMA) records",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "pma.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9c41a10-2bf3-4a15-bb2e-1380cda17a7c",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "pma.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6eefde0e-7b73-4170-bb98-4489093e25f0",
+          "name": "Device registrations and listings",
+          "request": {
+            "name": "Device registrations and listings",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "registrationlisting.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b99d1ab8-7a1d-49de-96f4-ab4bce2a7727",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "registrationlisting.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7167329-762d-45e9-9547-e3a335d86d8a",
+          "name": "Unique Device Identifier (UDI) database",
+          "request": {
+            "name": "Unique Device Identifier (UDI) database",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "udi.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8068b721-b145-44ba-af69-b695432c1fac",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "udi.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc4c763e-56a9-4e87-910f-f0ea2a3c094a",
+          "name": "COVID-19 serology testing data",
+          "request": {
+            "name": "COVID-19 serology testing data",
+            "description": {},
+            "url": {
+              "path": [
+                "device",
+                "covid19serology.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61c29e39-d6cb-4297-a2c8-8cc956355f68",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "device",
+                    "covid19serology.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://scDhcoYjKFI.yuEtpxULZbvqKtEhed8TQnCePXfgx7cmWfHIUmL2nud\",\n    \"license\": \"https://dnhpZvFbQ.ccidtGls+ojO8xf\",\n    \"last_updated\": \"2019-07-10\",\n    \"results\": {\n      \"skip\": 7667,\n      \"limit\": 5770,\n      \"total\": 6325\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": 5192.754323117738,\n      \"key_1\": 3092,\n      \"key_2\": \"string\"\n    },\n    {\n      \"key_0\": 9127.407218740722\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fda.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fac79f2a-18c8-4511-a4b4-75430d80c77d",
+    "name": "openFDA Animal & Veterinary Device API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).\n\nContact Support:\n Name: openFDA\n Email: open@fda.hhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

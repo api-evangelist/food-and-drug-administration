@@ -1,0 +1,939 @@
+{
+  "item": [
+    {
+      "id": "d9aa8796-3295-4904-bded-cb1d55ff2746",
+      "name": "Drug",
+      "description": {
+        "content": "Drug-related endpoints (adverse events, labeling, recalls, NDC).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b7d439db-d89f-4dba-b854-2718cbe2dc8e",
+          "name": "Drug adverse events (FAERS)",
+          "request": {
+            "name": "Drug adverse events (FAERS)",
+            "description": {
+              "content": "Query the FDA Adverse Event Reporting System (FAERS) for drug adverse event reports submitted since 2004.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drug",
+                "event.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69ff093b-87ec-4250-ac7f-718764022f82",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "event.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://Guo.oiiNF6tZVRLYJ.IZBxc.HrHptzs\",\n    \"license\": \"http://cimrCWscynwDGT.vlabL0CD0jySOQBZeCI8\",\n    \"last_updated\": \"1969-09-05\",\n    \"results\": {\n      \"skip\": 3627,\n      \"limit\": 7688,\n      \"total\": 8498\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 4913.24991616075\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71bd9c26-fd92-400d-86af-bb2aaaf3d0cd",
+              "name": "No matching records found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "event.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b2b4067-c1fe-41ec-8b69-90ab6684a27a",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "event.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70789477-b973-4b6d-974c-afa0cf17be66",
+          "name": "Drug product labeling (SPL)",
+          "request": {
+            "name": "Drug product labeling (SPL)",
+            "description": {
+              "content": "Query Structured Product Labeling (SPL) records for prescription and over-the-counter drugs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drug",
+                "label.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a98387c2-871b-418d-b70a-f98e29fd363c",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "label.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"https://XXloZmXPsvMWeDFcoykuQinG.bzfly0dxjbkijy1Ea.khGuYmYr9mhqfcBrX9zAWPMTrVF5YWWOs,OXELo.\",\n    \"license\": \"https://ubaAbti.onnnUNrXB7HMW+KRRu9Uz3mFIwOqobI.7uqooucZ2cQoz\",\n    \"last_updated\": \"1965-11-20\",\n    \"results\": {\n      \"skip\": 5410,\n      \"limit\": 1013,\n      \"total\": 2968\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": false,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 6657\n    },\n    {\n      \"key_0\": 1641.1295011704008,\n      \"key_1\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a44b203f-991b-4b44-81bd-aad1a8f00e67",
+          "name": "Drug recall enforcement reports",
+          "request": {
+            "name": "Drug recall enforcement reports",
+            "description": {
+              "content": "Query drug recall enforcement reports from the FDA Recall Enterprise System (RES).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drug",
+                "enforcement.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "071e9342-9e70-4107-9c02-1f971e3eb1c6",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "enforcement.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"https://XXloZmXPsvMWeDFcoykuQinG.bzfly0dxjbkijy1Ea.khGuYmYr9mhqfcBrX9zAWPMTrVF5YWWOs,OXELo.\",\n    \"license\": \"https://ubaAbti.onnnUNrXB7HMW+KRRu9Uz3mFIwOqobI.7uqooucZ2cQoz\",\n    \"last_updated\": \"1965-11-20\",\n    \"results\": {\n      \"skip\": 5410,\n      \"limit\": 1013,\n      \"total\": 2968\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": false,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 6657\n    },\n    {\n      \"key_0\": 1641.1295011704008,\n      \"key_1\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7b74f8a9-4b46-485e-8e2c-04e73bea00a5",
+          "name": "NDC Directory",
+          "request": {
+            "name": "NDC Directory",
+            "description": {
+              "content": "Query the National Drug Code (NDC) Directory of products in commercial distribution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drug",
+                "ndc.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "65c5d255-32ec-47d9-9ec6-9fd4820291a6",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "ndc.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"https://XXloZmXPsvMWeDFcoykuQinG.bzfly0dxjbkijy1Ea.khGuYmYr9mhqfcBrX9zAWPMTrVF5YWWOs,OXELo.\",\n    \"license\": \"https://ubaAbti.onnnUNrXB7HMW+KRRu9Uz3mFIwOqobI.7uqooucZ2cQoz\",\n    \"last_updated\": \"1965-11-20\",\n    \"results\": {\n      \"skip\": 5410,\n      \"limit\": 1013,\n      \"total\": 2968\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": false,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 6657\n    },\n    {\n      \"key_0\": 1641.1295011704008,\n      \"key_1\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00c3ed36-7aef-4705-b780-4a244ea8af45",
+          "name": "Drugs@FDA",
+          "request": {
+            "name": "Drugs@FDA",
+            "description": {
+              "content": "Query Drugs@FDA approval records including applications, submissions, and products.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drug",
+                "drugsfda.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b11a3f0-2c34-4b95-8915-aba44b3d4555",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "drugsfda.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"https://XXloZmXPsvMWeDFcoykuQinG.bzfly0dxjbkijy1Ea.khGuYmYr9mhqfcBrX9zAWPMTrVF5YWWOs,OXELo.\",\n    \"license\": \"https://ubaAbti.onnnUNrXB7HMW+KRRu9Uz3mFIwOqobI.7uqooucZ2cQoz\",\n    \"last_updated\": \"1965-11-20\",\n    \"results\": {\n      \"skip\": 5410,\n      \"limit\": 1013,\n      \"total\": 2968\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": false,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 6657\n    },\n    {\n      \"key_0\": 1641.1295011704008,\n      \"key_1\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97127ea1-9aff-45f0-9f21-a3d68ec60448",
+          "name": "Drug shortages",
+          "request": {
+            "name": "Drug shortages",
+            "description": {
+              "content": "Query the FDA drug shortage database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "drug",
+                "shortages.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fdd2ce10-5a8f-4983-8d28-2046cb9dd6b2",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "drug",
+                    "shortages.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"https://XXloZmXPsvMWeDFcoykuQinG.bzfly0dxjbkijy1Ea.khGuYmYr9mhqfcBrX9zAWPMTrVF5YWWOs,OXELo.\",\n    \"license\": \"https://ubaAbti.onnnUNrXB7HMW+KRRu9Uz3mFIwOqobI.7uqooucZ2cQoz\",\n    \"last_updated\": \"1965-11-20\",\n    \"results\": {\n      \"skip\": 5410,\n      \"limit\": 1013,\n      \"total\": 2968\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": false,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 6657\n    },\n    {\n      \"key_0\": 1641.1295011704008,\n      \"key_1\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fda.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "39b9fa36-b448-42ec-af84-8c2281417dba",
+    "name": "openFDA Animal & Veterinary Drug API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).\n\nContact Support:\n Name: openFDA\n Email: open@fda.hhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "openFDA Animal & Veterinary Tobacco API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tobacco",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Tobacco product problem reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/tobacco/problem.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Tobacco product problem reports"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

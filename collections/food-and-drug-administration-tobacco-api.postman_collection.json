@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "265b68d1-a2fc-4136-a3b6-3d0299a81a23",
+      "name": "Tobacco",
+      "description": {
+        "content": "Tobacco product problem reports.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c20a559-ba2b-4d9d-9945-0cd5e3e150cb",
+          "name": "Tobacco product problem reports",
+          "request": {
+            "name": "Tobacco product problem reports",
+            "description": {},
+            "url": {
+              "path": [
+                "tobacco",
+                "problem.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Lucene-style search expression scoped to the dataset's fields."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<string>",
+                  "description": "Field to count occurrences against (returns aggregated terms)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Maximum number of records to return (max 1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip",
+                  "value": "0",
+                  "description": "Number of records to skip for pagination (max 25,000)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf86aabb-c1ad-41a4-87c3-4e8a1129e07e",
+              "name": "Successful query result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tobacco",
+                    "problem.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "receivedate:[2024-01-01+TO+2024-12-31]"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "count",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"disclaimer\": \"string\",\n    \"terms\": \"http://tVFmmyEmutlTTITAhtkykKsB.bfE0XJQQ8vjX0U4O8SjJgaDpNk5IuXThx4W4KUE14WJ6DxFz1EenRcrxi1VmFYWxLKnPzaEhYM5QuYwKV\",\n    \"license\": \"http://qmVqjBCYRzDqSuuonf.druttSC.qhuQa\",\n    \"last_updated\": \"1961-08-05\",\n    \"results\": {\n      \"skip\": 8921,\n      \"limit\": 7180,\n      \"total\": 5078\n    }\n  },\n  \"results\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 4853\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fda.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ace03af-d73c-4b6f-9a25-c7511c0f792d",
+    "name": "openFDA Animal & Veterinary Tobacco API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).\n\nContact Support:\n Name: openFDA\n Email: open@fda.hhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

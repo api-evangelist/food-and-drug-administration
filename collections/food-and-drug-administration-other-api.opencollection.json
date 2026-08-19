@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "openFDA Animal & Veterinary Other API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Other",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "National Drug Code SPL Data Elements (NSDE)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/other/nsde.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "National Drug Code SPL Data Elements (NSDE)"
+        },
+        {
+          "info": {
+            "name": "Substance data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/other/substance.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Substance data"
+        },
+        {
+          "info": {
+            "name": "Historical FDA documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/other/historicaldocument.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Historical FDA documents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

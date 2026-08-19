@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "openFDA Animal & Veterinary Food API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Food",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Food recall enforcement reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/food/enforcement.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query food recall enforcement reports from the FDA Recall Enterprise System (RES). Updated weekly, data from 2004 onward."
+        },
+        {
+          "info": {
+            "name": "Food adverse events (CAERS)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fda.gov/food/event.json",
+            "params": [
+              {
+                "name": "search",
+                "value": "receivedate:[2024-01-01+TO+2024-12-31]",
+                "type": "query",
+                "description": "Lucene-style search expression scoped to the dataset's fields."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Field to sort by, with optional direction (e.g. `receivedate:desc`)."
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Field to count occurrences against (returns aggregated terms)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return (max 1000)."
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip for pagination (max 25,000)."
+              }
+            ]
+          },
+          "docs": "Query the CFSAN Adverse Event Reporting System (CAERS) for adverse events associated with foods, dietary supplements, and cosmetics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
