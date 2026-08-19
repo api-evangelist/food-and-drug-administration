@@ -32,7 +32,7 @@ tags:
   - Recalls
   - Adverse Events
 url: https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/apis.yml
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: food-and-drug-administration:food-and-drug-administration-animal-veterinary-api
   name: Food and Drug Administration Animal & Veterinary API
