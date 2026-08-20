@@ -26,6 +26,14 @@ position: Consumer
 tags:
   - Drugs
   - Devices
+  - Federal-Government
+  - Food Safety
+  - Public Data
+  - Recalls
+  - Adverse Events
+tags_raw:
+  - Drugs
+  - Devices
   - Federal Government
   - Food Safety
   - Public Data
@@ -135,7 +143,8 @@ apis:
   description: Cross-cutting datasets (NSDE, substance, harmonized).
   humanURL: https://open.fda.gov/apis
   baseURL: https://api.fda.gov
-  tags:
+  tags: []
+  tags_raw:
   - Other
   properties:
   - type: OpenAPI
