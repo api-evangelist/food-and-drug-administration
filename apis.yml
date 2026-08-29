@@ -5,6 +5,18 @@ description: >-
   products, and tobacco. Each noun exposes one or more datasets including adverse events, recall enforcement reports,
   product labeling, classifications, registrations, and approvals.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
