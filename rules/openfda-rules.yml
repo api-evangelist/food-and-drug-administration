@@ -1,4 +1,4 @@
-name: openFDA Usage Rules
+x-name: openFDA Usage Rules
 description: Operational, security, and compliance rules for the openFDA API.
 rules:
   - id: api-key-required-at-scale

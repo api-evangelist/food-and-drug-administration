@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: openFDA Animal & Veterinary API
   description: openFDA is an Elasticsearch-based public API serving FDA data on drugs, devices, foods, animal/veterinary products, and tobacco. Each noun exposes one or more categories (adverse events, recall enforcement reports, labeling, classification, registration, etc.).
@@ -37,60 +37,7 @@ paths:
         '200':
           $ref: '#/components/responses/SearchResults'
 components:
-  parameters:
-    Count:
-      name: count
-      in: query
-      description: Field to count occurrences against (returns aggregated terms).
-      required: false
-      schema:
-        type: string
-    Skip:
-      name: skip
-      in: query
-      description: Number of records to skip for pagination (max 25,000).
-      required: false
-      schema:
-        type: integer
-        minimum: 0
-        maximum: 25000
-        default: 0
-    Limit:
-      name: limit
-      in: query
-      description: Maximum number of records to return (max 1000).
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 1000
-        default: 1
-    Search:
-      name: search
-      in: query
-      description: Lucene-style search expression scoped to the dataset's fields.
-      required: false
-      schema:
-        type: string
-      example: receivedate:[2024-01-01+TO+2024-12-31]
-    Sort:
-      name: sort
-      in: query
-      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
-      required: false
-      schema:
-        type: string
   schemas:
-    SearchResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        results:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
     Meta:
       type: object
       properties:
@@ -114,6 +61,59 @@ components:
               type: integer
             total:
               type: integer
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+  parameters:
+    Sort:
+      name: sort
+      in: query
+      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
+      required: false
+      schema:
+        type: string
+    Count:
+      name: count
+      in: query
+      description: Field to count occurrences against (returns aggregated terms).
+      required: false
+      schema:
+        type: string
+    Limit:
+      name: limit
+      in: query
+      description: Maximum number of records to return (max 1000).
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 1000
+        default: 1
+    Search:
+      name: search
+      in: query
+      description: Lucene-style search expression scoped to the dataset's fields.
+      required: false
+      schema:
+        type: string
+      example: receivedate:[2024-01-01+TO+2024-12-31]
+    Skip:
+      name: skip
+      in: query
+      description: Number of records to skip for pagination (max 25,000).
+      required: false
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 25000
+        default: 0
   responses:
     SearchResults:
       description: Successful query result.
