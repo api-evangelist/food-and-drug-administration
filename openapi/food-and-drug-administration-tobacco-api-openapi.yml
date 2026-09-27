@@ -37,6 +37,16 @@ paths:
           $ref: '#/components/responses/SearchResults'
 components:
   schemas:
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
     Meta:
       type: object
       properties:
@@ -60,28 +70,18 @@ components:
               type: integer
             total:
               type: integer
-    SearchResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        results:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
   parameters:
-    Sort:
-      name: sort
-      in: query
-      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
-      required: false
-      schema:
-        type: string
     Count:
       name: count
       in: query
       description: Field to count occurrences against (returns aggregated terms).
+      required: false
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: Field to sort by, with optional direction (e.g. `receivedate:desc`).
       required: false
       schema:
         type: string

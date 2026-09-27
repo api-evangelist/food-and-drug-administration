@@ -7,15 +7,19 @@ description: >-
 type: Index
 deliveryModel:
   model: saas
-  open_source: false
+  license_evidence:
+    not_product:
+    - fda/openfda
+  open_source: unknown
   commercial: true
   callable_host: true
   label: Hosted service · you call their endpoint
-  confidence: high
+  confidence: low
   source:
   - openapi
   - pricing
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -39,7 +43,7 @@ position: Consuming
 tags:
   - Drugs
   - Devices
-  - Federal-Government
+  - Federal Government
   - Food Safety
   - Public Data
   - Recalls
@@ -52,6 +56,7 @@ tags_raw:
   - Public Data
   - Recalls
   - Adverse Events
+  - Federal-Government
 url: https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/apis.yml
 specificationVersion: '0.23'
 apis:
