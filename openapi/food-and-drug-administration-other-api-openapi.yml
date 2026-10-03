@@ -66,48 +66,7 @@ paths:
         '200':
           $ref: '#/components/responses/SearchResults'
 components:
-  schemas:
-    SearchResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/Meta'
-        results:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-    Meta:
-      type: object
-      properties:
-        disclaimer:
-          type: string
-        terms:
-          type: string
-          format: uri
-        license:
-          type: string
-          format: uri
-        last_updated:
-          type: string
-          format: date
-        results:
-          type: object
-          properties:
-            skip:
-              type: integer
-            limit:
-              type: integer
-            total:
-              type: integer
   parameters:
-    Count:
-      name: count
-      in: query
-      description: Field to count occurrences against (returns aggregated terms).
-      required: false
-      schema:
-        type: string
     Sort:
       name: sort
       in: query
@@ -133,6 +92,13 @@ components:
       schema:
         type: string
       example: receivedate:[2024-01-01+TO+2024-12-31]
+    Count:
+      name: count
+      in: query
+      description: Field to count occurrences against (returns aggregated terms).
+      required: false
+      schema:
+        type: string
     Skip:
       name: skip
       in: query
@@ -150,6 +116,40 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/SearchResponse'
+  schemas:
+    Meta:
+      type: object
+      properties:
+        disclaimer:
+          type: string
+        terms:
+          type: string
+          format: uri
+        license:
+          type: string
+          format: uri
+        last_updated:
+          type: string
+          format: date
+        results:
+          type: object
+          properties:
+            skip:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+    SearchResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        results:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
   securitySchemes:
     apiKeyQuery:
       type: apiKey
