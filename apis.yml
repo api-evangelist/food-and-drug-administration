@@ -206,6 +206,12 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/food-and-drug-administration/refs/heads/main/rules/openfda-rules.yml
 common:
+  - type: Plans
+    url: plans/food-and-drug-administration-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/food-and-drug-administration-rate-limits.yml
+  - type: FinOps
+    url: finops/food-and-drug-administration-finops.yml
   - type: AgenticAccess
     url: agentic-access/food-and-drug-administration-agentic-access.yml
   - type: DomainSecurity
