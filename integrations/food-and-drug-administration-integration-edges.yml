@@ -1,0 +1,55 @@
+edges:
+- partner_name: identifiers.org registry (resources)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://registry.identifiers.org/registry
+  match:
+    method: domain+name-among-holders
+    domain: fda.gov
+    seen_as:
+    - resource home
+    registered_as:
+    - U.S. Food and Drug Administration, Maryland
+    - United States Food and Drug Administration
+  life_sciences:
+    register: idorg
+    listings:
+    - prefix: ndc
+      mir: MIR:00100554
+      resource: National Drug Code at Food and Drug Administration
+      official: true
+    - prefix: unii
+      mir: MIR:00000990
+      resource: United States Food and Drug Administration
+      official: true
+    listings_total: 2
+    signals:
+    - ndc
+    - unii
+  contract_reference:
+    register: identifiers.org registry (resources)
+    spec_file: null
+    role: identifiers-resource
+    registered_name: U.S. Food and Drug Administration, Maryland
+    register_id: U.S. Food and Drug Administration, Maryland
+    matched_domain: fda.gov
+    detected_by: sweep-life-sciences.py
+    detected: '2026-10-15'
+  detected_by: sweep-life-sciences.py
+  first_seen: '2026-10-15'
+generated: '2026-10-15'
+method: searched
+source:
+- https://bio.tools/api/tool/?format=json&toolType=%22Web%20API%22&page=1
+- https://registry.api.identifiers.org/resolutionApi/getResolverDataset
+- https://registry.ga4gh.org/v1/implementations
+- https://registry.ga4gh.org/v1/services
+checked:
+- https://bio.tools/api/tool/?format=json&toolType=%22Web%20API%22&page=1
+- https://registry.api.identifiers.org/resolutionApi/getResolverDataset
+- https://registry.ga4gh.org/v1/implementations
+- https://registry.ga4gh.org/v1/services
