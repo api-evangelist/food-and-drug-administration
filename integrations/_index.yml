@@ -22,3 +22,30 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: food-and-drug-administration-api-data-gov
+  label: api.data.gov
+  partner_name: api.data.gov
+  category: federal API program participation (shared API gateway)
+  type: register
+  channel: standard-directory
+  evidence: https://api.data.gov/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: api.data.gov agency users (github.com/GSA/api.data.gov content/users.csv @ae4c262690; agency list
+      on api.data.gov)
+    standard: api.data.gov (GSA TTS federal API management service)
+    spec_file: null
+    role: api-data-gov-agency
+    registered_name: Food and Drug Administration
+    register_id: fda.gov
+    matched_domain: fda.gov
+    matched_by: domain+name-among-holders
+    hosts:
+    - fda.gov
+    signal_note: 'participation only: the agency serves APIs through the shared federal API gateway (api.data.gov
+      keys, rate limits, analytics). Hosts are context, never counted'
+    detected_by: sweep-us-federal-api-programs.py
+    detected: '2026-10-21'
+  status: not-a-workflow
+  arazzo: null
